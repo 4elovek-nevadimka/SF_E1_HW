@@ -1,2 +1,2 @@
 # SF_E1_HW
-React Basics
+SkillFactory homework Unit F1 - React Basics

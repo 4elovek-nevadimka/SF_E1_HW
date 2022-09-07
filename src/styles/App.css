@@ -18,19 +18,27 @@ body::-webkit-scrollbar {
     margin: 0 auto;
     width: 768px;
     height: 100%;
-    background-color: red;
+    /* background-color: lightgray; */
 }
 
-.getLocation {
+.component-container-left, .component-container-right {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 5px auto;
-    background-color: blueviolet;
-    width: 100%;
+    margin: 5px;
+    width: auto;
+    /* background-color: aquamarine; */
 }
 
-.getLocation-button, .getLocation-text {
-    margin: 10px;
+.component-container-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.component-container-right {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.component-container-element {
+    margin: 5px;
 }

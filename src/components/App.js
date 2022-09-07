@@ -4,7 +4,8 @@ import "../styles/App.css";
 import GetCity from "./GetCity";
 import GetForecast from "./GetForecast";
 import GetLocation from "./GetLocation";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from "react-bootstrap";
 
 function App() {
     const location = GetLocation();
@@ -16,14 +17,14 @@ function App() {
     return (
         <>
             <div className="content">
-                <div className="getLocation">
-                    <div className="getLocation-text">
+                <div className="component-container-right">
+                    <div className="component-container-element">
                         {location.loaded
                             ? JSON.stringify(location)
-                            : "Location data not available yet. Please enter the city..."}
+                            : "Location data not available yet."}
                     </div>
-                    <div className="getLocation-button">
-                        <button onClick={getLocation}>Get Location</button>
+                    <div className="component-container-element">
+                        <Button variant="secondary" onClick={getLocation}>Get Location</Button>
                     </div>
                 </div>
                 <GetCity />

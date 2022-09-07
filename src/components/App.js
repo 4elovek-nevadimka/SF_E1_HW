@@ -1,19 +1,34 @@
 import React from "react";
 
 import "../styles/App.css";
-import GetGeo from "./GetGeo";
+import GetCity from "./GetCity";
+import GetForecast from "./GetForecast";
+import GetLocation from "./GetLocation";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import Header from "./Header";
-// import Main from "./Main";
-
 function App() {
+    const location = GetLocation();
+
+    const getLocation = () => {
+        location = GetLocation();
+    }
+
     return (
         <>
-            {/* <Header buttonName={"My Button"} /> */}
-            {/* <Main /> */}
-            <h1>Hello Billy</h1>
-            <GetGeo />
+            <div className="content">
+                <div className="getLocation">
+                    <div className="getLocation-text">
+                        {location.loaded
+                            ? JSON.stringify(location)
+                            : "Location data not available yet. Please enter the city..."}
+                    </div>
+                    <div className="getLocation-button">
+                        <button onClick={getLocation}>Get Location</button>
+                    </div>
+                </div>
+                <GetCity />
+                <GetForecast />
+            </div>
         </>
     );
 }

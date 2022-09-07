@@ -1,0 +1,13 @@
+.getForecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 5px auto;
+    background-color: gray;
+    width: 100%;
+}
+
+.getForecast-btn, .getForecast-btn {
+    margin: 5px;
+}

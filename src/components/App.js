@@ -1,17 +1,19 @@
 import React from "react";
 
-import "../styles/App.css";
 import GetCity from "./GetCity";
 import GetForecast from "./GetForecast";
-import GetLocation from "./GetLocation";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import GetGeoForecast from "../hooks/useInitGeoForecast";
+
+import "../styles/App.css";
 import { Button } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-    const location = GetLocation();
+    const geoForecast = GetGeoForecast();
+    console.log(geoForecast);
 
     const getLocation = () => {
-        location = GetLocation();
+        geoForecast = GetGeoForecast();
     }
 
     return (
@@ -19,8 +21,8 @@ function App() {
             <div className="content">
                 <div className="component-container-right">
                     <div className="component-container-element">
-                        {location.loaded
-                            ? JSON.stringify(location)
+                        {geoForecast.loaded
+                            ? JSON.stringify(geoForecast)
                             : "Location data not available yet."}
                     </div>
                     <div className="component-container-element">
@@ -28,7 +30,7 @@ function App() {
                     </div>
                 </div>
                 <GetCity />
-                <GetForecast location={location}/>
+                <GetForecast geoForecast={geoForecast}/>
             </div>
         </>
     );

@@ -28,7 +28,7 @@ function App() {
                     </div>
                 </div>
                 <GetCity />
-                <GetForecast />
+                <GetForecast location={location}/>
             </div>
         </>
     );

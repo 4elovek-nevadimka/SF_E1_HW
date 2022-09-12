@@ -1,5 +1,5 @@
-import { Button } from "react-bootstrap";
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Form, InputGroup } from "react-bootstrap";
 
 import "../styles/GetCity.css";

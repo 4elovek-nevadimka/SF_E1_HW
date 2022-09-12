@@ -1,4 +1,4 @@
-const apiKey = '07780815cf6653ac3a43d8d071dceb2a';
+const apiKey = '';
 
 const getForecastRequest = (current, latitude, longitude) => {
     return `https://api.openweathermap.org/data/2.5/${current ? "weather" : "forecast"}?` 

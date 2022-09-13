@@ -44,10 +44,10 @@ function GetCity() {
             </div>
             <div>
                 <div className="table-wrapper">
-                    <Table borderless hover size="sm" className="cities">
-                        <tbody>
-                            {
-                                cities != null ?
+                    {cities ? (
+                        <Table borderless hover size="sm" className="cities">
+                            <tbody>
+                                {
                                     cities.map(city =>
                                         <tr>
                                             <td>
@@ -57,10 +57,13 @@ function GetCity() {
                                                 <small>[{city.lat}, {city.lon}]</small>
                                             </td>
                                         </tr>
-                                    ) : ""
-                            }
-                        </tbody>
-                    </Table>
+                                    )
+                                }
+                            </tbody>
+                        </Table>
+                    ) : (
+                        ""
+                    )}
                 </div>
             </div>
         </div>

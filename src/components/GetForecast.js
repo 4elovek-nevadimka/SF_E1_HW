@@ -15,7 +15,7 @@ function GetForecast(props) {
     const loadForecast = (current) => {
         if (props.geoForecast.loaded) {
             if (!props.geoForecast.error) {
-                const request = GetForecastRequest(current, 
+                const request = GetForecastRequest(current,
                     props.geoForecast.coordinates.lat, props.geoForecast.coordinates.lng);
                 axios.get(request).then(res => {
                     setForecast(res.data);
@@ -42,16 +42,48 @@ function GetForecast(props) {
     }
 
     return (
-        <div className="component-container-left">
-            <div className="component-container-element">
-                <Button
-                    variant={btn_current_selected ? "dark" : "light"}
-                    onClick={currentForecastBtnClick}>Current</Button>
+        <div>
+            <div className="component-container-left">
+                <div className="component-container-element">
+                    <Button
+                        variant={btn_current_selected ? "dark" : "light"}
+                        onClick={currentForecastBtnClick}>Current</Button>
+                </div>
+                <div className="component-container-element">
+                    <Button
+                        variant={btn_5days_selected ? "dark" : "light"}
+                        onClick={fiveDaysForecastBtnClick}>5 days</Button>
+                </div>
             </div>
-            <div className="component-container-element">
-                <Button
-                    variant={btn_5days_selected ? "dark" : "light"}
-                    onClick={fiveDaysForecastBtnClick}>5 days</Button>
+            <div>
+                {props.geoForecast.forecast ? (
+                    <>
+                        <h2>
+                            {props.geoForecast.forecast.name}, 
+                            {props.geoForecast.forecast.sys.country}
+                        </h2>
+                        <h3>
+                            {props.geoForecast.forecast.main.temp}°C
+                        </h3>
+                        <p>
+                            <small>
+                                Feels like {props.geoForecast.forecast.main.feels_like}°C
+                            </small>
+                        </p>
+                        <p>
+                            <small>
+                                Humidity: {props.geoForecast.forecast.main.humidity}%
+                            </small>
+                        </p>
+                        <p>
+                            <small>
+                                Wind: {props.geoForecast.forecast.wind.speed}m/s
+                            </small>
+                        </p>
+                    </>
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     );

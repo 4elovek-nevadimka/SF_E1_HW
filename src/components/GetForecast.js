@@ -10,17 +10,22 @@ function GetForecast(props) {
     const [btn_current_selected, changeCurrentSelected] = useState(true);
     const [btn_5days_selected, change5daysSelected] = useState(false);
 
-    const [forecast, setForecast] = useState([]);
+    const [forecast, setForecast] = useState();
 
     const loadForecast = (current) => {
         if (props.geoForecast.loaded) {
             if (!props.geoForecast.error) {
                 const request = GetForecastRequest(current,
                     props.geoForecast.coordinates.lat, props.geoForecast.coordinates.lng);
-                axios.get(request).then(res => {
-                    setForecast(res.data);
-                });
-                console.log(forecast);
+                console.log(request);
+                axios.get(request).then(
+                    res => {
+                        setForecast({
+                            forecast: res.data,
+                        });
+                        console.log(res.data);
+                    },
+                );
             }
         }
     }
@@ -56,10 +61,16 @@ function GetForecast(props) {
                 </div>
             </div>
             <div>
+                {/* {forecast ? (
+                    <p>{forecast.forecast.name}</p>
+                ) : (
+                    <p>no data</p>
+                )} */}
+
                 {props.geoForecast.forecast ? (
                     <>
                         <h2>
-                            {props.geoForecast.forecast.name}, 
+                            {props.geoForecast.forecast.name},
                             {props.geoForecast.forecast.sys.country}
                         </h2>
                         <h3>
